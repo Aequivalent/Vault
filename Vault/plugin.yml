@@ -1,10 +1,10 @@
-name: ${project.name}
-version: ${project.version}-b${env.TRAVIS_BUILD_NUMBER}
-description: ${project.description}
+name: Vault
+version: 0.1
+description: Vault with some tweaks
 authors: [cereal, Sleaker, mung3r]
-website: ${project.url}
+website: https://github.com/MilkBowl/Vault
 
-main: ${mainClass}
+main: net.milkbowl.vault.Vault
 load: startup
 
 commands:
