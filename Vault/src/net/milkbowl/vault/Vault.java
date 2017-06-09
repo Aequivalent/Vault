@@ -173,7 +173,7 @@ public class Vault extends JavaPlugin {
         hookEconomy("EcoValent", Economy_EcoValent.class, ServicePriority.Normal, "de.antivalent.ecovalent.EcoValent");
 
         // Try to load Essentials Economy
-        hookEconomy("Essentials Economy", Economy_Essentials.class, ServicePriority.Low, "com.earth2me.essentials.api.Economy", "com.earth2me.essentials.api.NoLoanPermittedException",  "com.earth2me.essentials.api.UserDoesNotExistException");
+        //hookEconomy("Essentials Economy", Economy_Essentials.class, ServicePriority.Low, "com.earth2me.essentials.api.Economy", "com.earth2me.essentials.api.NoLoanPermittedException",  "com.earth2me.essentials.api.UserDoesNotExistException");
     }
 
     /**
