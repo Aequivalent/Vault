@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -103,10 +102,11 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean createPlayerAccount(String name) {
+		plugin.getLogger().info("createPlayer: " + name);
 		if(hasAccount(name)){
 			return false;
 		}
-		EcoValent.getInstance().getAccountManager().newAccount(name);
+		EcoValent.getInstance().getAccountManager().getAccount(name);
 		return true;
 	}
 
@@ -133,6 +133,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public EconomyResponse depositPlayer(String name, double amount) {
+		plugin.getLogger().info("depositPlayer: " + name + " || " + amount);
 		if(amount < 0.0){
 			return new EconomyResponse(0, 0, ResponseType.FAILURE, "Das Einzahlen von negativen Beträgen ist nicht möglich.");
 		}
@@ -159,6 +160,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public double getBalance(String name) {
+		plugin.getLogger().info("getBalance: " + name);
 		return EcoValent.getInstance().getAccountManager().getAccount(name).getBalance();
 	}
 
@@ -180,6 +182,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean has(String name, double amount) {
+		plugin.getLogger().info("has: " + name + " || " + amount);
 		return EcoValent.getInstance().getAccountManager().getAccount(name).hasEnough(amount);
 	}
 
@@ -190,6 +193,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean hasAccount(String name) {
+		plugin.getLogger().info("hasAccount: " + name);
 		return EcoValent.getInstance().getAccountManager().exists(name);
 	}
 
@@ -225,6 +229,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 	
 	@Override
 	public EconomyResponse withdrawPlayer(String name, double amount) {
+		plugin.getLogger().info("withdrawPlayer: " + name + " || " + amount);
 		if(amount < 0.0){
 			return new EconomyResponse(0, 0, ResponseType.FAILURE, "Das Abheben von negativen Beträgen ist nicht möglich.");
 		}
