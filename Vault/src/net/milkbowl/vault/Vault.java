@@ -157,9 +157,6 @@ public class Vault extends JavaPlugin {
     private void loadChat() {
         // Try to load PermissionsEx
         hookChat("PermissionsEx", Chat_PermissionsEx.class, ServicePriority.Highest, "ru.tehkode.permissions.bukkit.PermissionsEx");
-
-        // Try to load GroupManager
-        hookChat("GroupManager", Chat_GroupManager.class, ServicePriority.Normal, "org.anjocaido.groupmanager.GroupManager");
     }
 
     /**
@@ -182,9 +179,6 @@ public class Vault extends JavaPlugin {
     private void loadPermission() {
         // Try to load PermissionsEx
         hookPermission("PermissionsEx", Permission_PermissionsEx.class, ServicePriority.Highest, "ru.tehkode.permissions.bukkit.PermissionsEx");
-
-        // Try to load GroupManager
-        hookPermission("GroupManager", Permission_GroupManager.class, ServicePriority.High, "org.anjocaido.groupmanager.GroupManager");
 
         Permission perms = new Permission_SuperPerms(this);
         sm.register(Permission.class, perms, this, ServicePriority.Lowest);
