@@ -102,17 +102,17 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean createPlayerAccount(String name) {
-		plugin.getLogger().info("createPlayer: " + name);
-		if(hasAccount(name)){
+		plugin.getLogger().info("createPlayer: " + name.toLowerCase());
+		if(hasAccount(name.toLowerCase())){
 			return false;
 		}
-		EcoValent.getInstance().getAccountManager().getAccount(name);
+		EcoValent.getInstance().getAccountManager().getAccount(name.toLowerCase());
 		return true;
 	}
 
 	@Override
 	public boolean createPlayerAccount(String name, String world) {
-		return createPlayerAccount(name);
+		return createPlayerAccount(name.toLowerCase());
 	}
 
 	@Override
@@ -133,19 +133,19 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public EconomyResponse depositPlayer(String name, double amount) {
-		plugin.getLogger().info("depositPlayer: " + name + " || " + amount);
+		plugin.getLogger().info("depositPlayer: " + name.toLowerCase() + " || " + amount);
 		if(amount < 0.0){
 			return new EconomyResponse(0, 0, ResponseType.FAILURE, "Das Einzahlen von negativen Beträgen ist nicht möglich.");
 		}
 		double balance;
-		Account account = EcoValent.getInstance().getAccountManager().getAccount(name);
+		Account account = EcoValent.getInstance().getAccountManager().getAccount(name.toLowerCase());
 		balance = account.deposite(amount);
 		return new EconomyResponse(amount, balance, ResponseType.SUCCESS, "");
 	}
 
 	@Override
 	public EconomyResponse depositPlayer(String name, String world, double amount) {
-		return depositPlayer(name, amount);
+		return depositPlayer(name.toLowerCase(), amount);
 	}
 
 	@Override
@@ -160,13 +160,13 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public double getBalance(String name) {
-		plugin.getLogger().info("getBalance: " + name);
-		return EcoValent.getInstance().getAccountManager().getAccount(name).getBalance();
+		plugin.getLogger().info("getBalance: " + name.toLowerCase());
+		return EcoValent.getInstance().getAccountManager().getAccount(name.toLowerCase()).getBalance();
 	}
 
 	@Override
 	public double getBalance(String name, String world) {
-		return getBalance(name);
+		return getBalance(name.toLowerCase());
 	}
 
 	@Override
@@ -182,24 +182,24 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean has(String name, double amount) {
-		plugin.getLogger().info("has: " + name + " || " + amount);
-		return EcoValent.getInstance().getAccountManager().getAccount(name).hasEnough(amount);
+		plugin.getLogger().info("has: " + name.toLowerCase() + " || " + amount);
+		return EcoValent.getInstance().getAccountManager().getAccount(name.toLowerCase()).hasEnough(amount);
 	}
 
 	@Override
 	public boolean has(String name, String world, double amount) {
-		return has(name, amount);
+		return has(name.toLowerCase(), amount);
 	}
 
 	@Override
 	public boolean hasAccount(String name) {
-		plugin.getLogger().info("hasAccount: " + name);
-		return EcoValent.getInstance().getAccountManager().exists(name);
+		plugin.getLogger().info("hasAccount: " + name.toLowerCase());
+		return EcoValent.getInstance().getAccountManager().exists(name.toLowerCase());
 	}
 
 	@Override
 	public boolean hasAccount(String name, String world) {
-		return hasAccount(name);
+		return hasAccount(name.toLowerCase());
 	}
 
 	@Override
@@ -229,22 +229,22 @@ public class Economy_EcoValent extends AbstractEconomy {
 	
 	@Override
 	public EconomyResponse withdrawPlayer(String name, double amount) {
-		plugin.getLogger().info("withdrawPlayer: " + name + " || " + amount);
+		plugin.getLogger().info("withdrawPlayer: " + name.toLowerCase() + " || " + amount);
 		if(amount < 0.0){
 			return new EconomyResponse(0, 0, ResponseType.FAILURE, "Das Abheben von negativen Beträgen ist nicht möglich.");
 		}
 		double balance;
-		Account account = EcoValent.getInstance().getAccountManager().getAccount(name);
+		Account account = EcoValent.getInstance().getAccountManager().getAccount(name.toLowerCase());
 		if(account.hasEnough(amount)){
 			balance = account.withdraw(amount);
 			return new EconomyResponse(amount, balance, ResponseType.SUCCESS, "");
 		}
-		return new EconomyResponse(0, getBalance(name), ResponseType.FAILURE, "Die Liquidität des Spielers ist nicht ausreichend.");
+		return new EconomyResponse(0, getBalance(name.toLowerCase()), ResponseType.FAILURE, "Die Liquidität des Spielers ist nicht ausreichend.");
 	}
 
 	@Override
 	public EconomyResponse withdrawPlayer(String name, String world, double amount) {
-		return withdrawPlayer(name, amount);
+		return withdrawPlayer(name.toLowerCase(), amount);
 	}
 
 }
