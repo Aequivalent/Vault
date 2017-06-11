@@ -102,7 +102,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean createPlayerAccount(String name) {
-		plugin.getLogger().info("createPlayer: " + name.toLowerCase());
+		//plugin.getLogger().info("createPlayer: " + name.toLowerCase());
 		if(hasAccount(name.toLowerCase())){
 			return false;
 		}
@@ -133,7 +133,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public EconomyResponse depositPlayer(String name, double amount) {
-		plugin.getLogger().info("depositPlayer: " + name.toLowerCase() + " || " + amount);
+		//plugin.getLogger().info("depositPlayer: " + name.toLowerCase() + " || " + amount);
 		if(amount < 0.0){
 			return new EconomyResponse(0, 0, ResponseType.FAILURE, "Das Einzahlen von negativen Beträgen ist nicht möglich.");
 		}
@@ -160,7 +160,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public double getBalance(String name) {
-		plugin.getLogger().info("getBalance: " + name.toLowerCase());
+		//plugin.getLogger().info("getBalance: " + name.toLowerCase());
 		return EcoValent.getInstance().getAccountManager().getAccount(name.toLowerCase()).getBalance();
 	}
 
@@ -182,7 +182,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean has(String name, double amount) {
-		plugin.getLogger().info("has: " + name.toLowerCase() + " || " + amount);
+		//plugin.getLogger().info("has: " + name.toLowerCase() + " || " + amount);
 		return EcoValent.getInstance().getAccountManager().getAccount(name.toLowerCase()).hasEnough(amount);
 	}
 
@@ -193,7 +193,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 
 	@Override
 	public boolean hasAccount(String name) {
-		plugin.getLogger().info("hasAccount: " + name.toLowerCase());
+		//plugin.getLogger().info("hasAccount: " + name.toLowerCase());
 		return EcoValent.getInstance().getAccountManager().exists(name.toLowerCase());
 	}
 
@@ -229,7 +229,7 @@ public class Economy_EcoValent extends AbstractEconomy {
 	
 	@Override
 	public EconomyResponse withdrawPlayer(String name, double amount) {
-		plugin.getLogger().info("withdrawPlayer: " + name.toLowerCase() + " || " + amount);
+		//plugin.getLogger().info("withdrawPlayer: " + name.toLowerCase() + " || " + amount);
 		if(amount < 0.0){
 			return new EconomyResponse(0, 0, ResponseType.FAILURE, "Das Abheben von negativen Beträgen ist nicht möglich.");
 		}
